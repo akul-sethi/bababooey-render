@@ -1,0 +1,61 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 50, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 100, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 100, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.30",
+  "image": "legs.png",
+  "format": "RGBA8888",
+  "size": { "w": 150, "h": 30 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "legs_walk", "from": 0, "to": 1, "direction": "forward" },
+   { "name": "legs_idle", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "legs_jump", "from": 2, "to": 4, "direction": "forward" }
+  ]
+ }
+}

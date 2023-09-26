@@ -1,0 +1,64 @@
+{
+    "section1": {
+        "files": [
+            {
+                "atlasURL": "static/assets/atlas/atlas.json",
+                "textureURL": "static/assets/atlas/atlas.png",
+                "type": "atlas",
+                "key": "sprite"
+            },
+            {
+                "atlasURL": "static/assets/atlas/ui.json",
+                "textureURL": "static/assets/atlas/ui.png",
+                "type": "atlas",
+                "key": "ui"
+            },
+            {
+                "url": "static/assets/maps/bababooey_final_map_1.json",
+                "type": "tilemapTiledJSON",
+                "key": "pixel_map"
+            },
+            {
+                "url": "static/assets/enviroment/pixel_tileset.png",
+                "type": "image",
+                "key": "pixel_tileset"
+            }, 
+            {
+                "url": "static/assets/enviroment/Clouds.png",
+                "type": "image",
+                "key": "clouds"
+            }, 
+            {
+                "atlasURL": "static/assets/atlas/bodies.json",
+                "textureURL": "static/assets/atlas/bodies.png",
+                "type": "aseprite",
+                "key": "torso"
+            },
+            {
+                "atlasURL": "static/assets/atlas/guns.json",
+                "textureURL": "static/assets/atlas/guns.png",
+                "type": "aseprite",
+                "key": "guns"
+            },
+            {
+                "atlasURL": "static/assets/atlas/legs.json",
+                "textureURL": "static/assets/atlas/legs.png",
+                "type": "aseprite",
+                "key": "legs"
+            }, 
+            {
+                "atlasURL": "static/assets/atlas/bullets.json",
+                "textureURL": "static/assets/atlas/bullets.png",
+                "type": "aseprite",
+                "key": "bullets"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}

@@ -1,0 +1,111 @@
+{ "frames": [
+   {
+    "filename": "0",
+    "frame": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "1",
+    "frame": { "x": 50, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "2",
+    "frame": { "x": 50, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "3",
+    "frame": { "x": 100, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "4",
+    "frame": { "x": 150, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "5",
+    "frame": { "x": 200, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "6",
+    "frame": { "x": 250, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "7",
+    "frame": { "x": 300, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "8",
+    "frame": { "x": 300, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   },
+   {
+    "filename": "9",
+    "frame": { "x": 350, "y": 0, "w": 50, "h": 30 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 50, "h": 30 },
+    "sourceSize": { "w": 50, "h": 30 },
+    "duration": 100
+   }
+ ],
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.30",
+  "image": "bodies.png",
+  "format": "RGBA8888",
+  "size": { "w": 400, "h": 30 },
+  "scale": "1",
+  "frameTags": [
+   { "name": "torso_idle_fire", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "torso_fire_fire", "from": 0, "to": 0, "direction": "forward" },
+   { "name": "torso_fire_alien", "from": 1, "to": 4, "direction": "forward" },
+   { "name": "torso_idle_alien", "from": 1, "to": 1, "direction": "forward" },
+   { "name": "torso_fire_rifle", "from": 5, "to": 6, "direction": "forward" },
+   { "name": "torso_idle_rifle", "from": 5, "to": 5, "direction": "forward" },
+   { "name": "torso_fire_laser", "from": 7, "to": 9, "direction": "forward" },
+   { "name": "torso_idle_laser", "from": 7, "to": 7, "direction": "forward" }
+  ]
+ }
+}

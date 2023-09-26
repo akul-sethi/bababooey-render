@@ -1,0 +1,67 @@
+@font-face {
+    font-family: PixelFont;
+    src: url('./prstartk.ttf');
+}
+
+input {
+    font-family: PixelFont;
+    color: white;
+}
+
+.outer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.inputs div{
+    display: flex;
+    align-items: center;
+}
+
+.explanation {
+    padding: 0.25em;
+    background-color: black;
+    color: white;
+    font-family: PixelFont;
+    font-size: xx-small;
+    overflow-y: auto;
+}
+
+#rcorners {
+    font-size: smaller;
+    margin: 1em;
+    border-radius: 25px;
+    background-color: #4818d7;
+    /* border: 2px solid blueviolet; */
+    padding: 1em;
+    width: 12em;
+    /* height: 30px;  */
+}
+
+#rcorners2 {
+    
+    border-radius: 25px;
+    background-color: #d738e9;
+    /* border: 2px solid blueviolet; */
+    padding: 1em;
+    /* width: 6em; */
+    /* height: 150px;  */
+}
+
+
+.title {
+    font-family: PixelFont;
+    color:#d738e9;
+    animation: blinker 1s linear infinite
+}
+
+@keyframes blinker {  
+    50% { opacity: 0; }
+  }
