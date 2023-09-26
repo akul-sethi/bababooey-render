@@ -3,8 +3,9 @@
 from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit, join_room, rooms, leave_room
 import threading, time
+from engineio.payload import Payload
 
-
+Payload.max_decode_packets = 100
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'asdfasfadkfha'
