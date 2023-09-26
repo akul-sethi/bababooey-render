@@ -73,6 +73,8 @@ def user_disconnected():
 
 @socketio.on('playerMoved')
 def player_moved(movementData, methods=['GET', 'POST']):
+	if(len(rooms()) <= 1):
+		return
 	room = rooms()[1]
 	id = movementData['playerID']
 	player = roomsDict[room][id]
@@ -91,10 +93,14 @@ def player_moved(movementData, methods=['GET', 'POST']):
 
 @socketio.on('hitPlayer')
 def hit_player(hitData, methods=['GET', 'POST']):
+	if(len(rooms()) <= 1):
+		return
 	emit('newHitData', hitData, broadcast = True, to=rooms()[1])
 
 @socketio.on('iDied')
 def i_died(data, methods=['GET', 'POST']):
+	if(len(rooms()) <= 1):
+		return
 	room = rooms()[1]
 	player = roomsDict[room][data['hID']]
 	player['x'] = 600
