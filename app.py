@@ -89,8 +89,8 @@ def i_died(data, methods=['GET', 'POST']):
 # if __name__ == '__main__':
 # 	socketio.run(app, debug=True, port=5007)
 
-if __name__ == '__main__':
-	socketio.run(app, debug=True, port=5010, host='0.0.0.0')
-
 # if __name__ == '__main__':
-# 	app.run()
+# 	socketio.run(app, debug=True, port=5010, host='0.0.0.0')
+
+if __name__ == '__main__':
+	app.run()
