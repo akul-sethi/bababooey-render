@@ -120,7 +120,6 @@ class Player extends Phaser.GameObjects.Container{
         this.setEquip('fire')
         this.setData('kills', 0)
         this.setData('ghost', false)
-        this.setData('ammo', )
         this.gun.setData("isFiring", false)
         this.setScale(this.scaleFactor, this.scaleFactor)
        
@@ -193,7 +192,10 @@ class Player extends Phaser.GameObjects.Container{
     // () -> Boolean
     // Returns true if the player dies
     takeDamage(type){
-        if(this.getData('ghost') === true) {return false}
+        if(this.getData('ghost') == true) {
+            console.log("IM GHOSTED")
+            return false
+        }
         switch (type){
             case 'fire':
                 this.data.values.health  -= 10

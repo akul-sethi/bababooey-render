@@ -26,7 +26,7 @@ class TitleScreen extends Phaser.Scene{
 
         login.on('click', (event) => {
             if(event.target.name === 'join'){
-                this.scene.start('Level', {room: login.getChildByName('room').value, username: login.getChildByName('username').value})
+                this.scene.start('Level', {username: login.getChildByName('username').value})
                 this.background.destroy()
             }
         })

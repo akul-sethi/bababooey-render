@@ -112,6 +112,24 @@ class Level extends Phaser.Scene {
 			if(data.hID === this.socket.id){
 
 				if(this.player.takeDamage(data.t)){
+					this.player.x = 600
+					this.player.y = 200
+					this.player.body.velocity.x = 0
+					this.player.body.velocity.y = 0
+					this.player.getData("startQueue").push("ghost")
+					this.player.setData("flip", false)
+					this.player.setData("equip", "fire")
+					this.player.getByName('gun').setRotation(0)
+					this.player.setData("kills", 0)
+					this.player.setData("health", 100)
+					this.player.bullets = {
+						fire: {in: 4, reserve: 4, full: 4},
+						alien: {in: 15, reserve: 30, full: 15},
+						laser: {in: 10, reserve: 20, full: 10},
+						rifle: {in: 3, reserve: 3, full: 3}
+					}
+					this.player.ghost()
+					this.player.drawHealthBar()
 					this.socket.emit('iDied', data)
 				}
 				
@@ -149,14 +167,7 @@ class Level extends Phaser.Scene {
 						this.player.bullets.rifle.reserve = 3
 						break;
 					default:
-						this.player.bullets.rifle.in = this.player.bullets.rifle.full
-						this.player.bullets.rifle.reserve = 3
-						this.player.bullets.alien.in = this.player.bullets.alien.full
-						this.player.bullets.alien.reserve = 20
-						this.player.bullets.laser.in = this.player.bullets.laser.full
-						this.player.bullets.laser.reserve = 30
-						this.player.bullets.fire.in = this.player.bullets.fire.full
-						this.player.bullets.fire.reserve = 4
+						break;
 				}
 
 				this.player.bulletTextIn.setText(String(this.player.bullets[this.player.getData('equip')].in))
@@ -175,7 +186,6 @@ class Level extends Phaser.Scene {
 					childPlayer.setEquip(player.equip)
 					childPlayer.getByName('gun').setRotation(player.gunRotation)
 					childPlayer.setData('kills', player.kills)
-					childPlayer.setData('health', player.health)
 
 					player.startQueue.forEach((startEvent) => {
 
@@ -205,10 +215,9 @@ class Level extends Phaser.Scene {
 		if(!this.player || !this.connected){
 			return
 		}
-		
-		
+
 		this.playerController.update(dt)
-	
+	  
 		
 			this.socket.emit('playerMoved', {
 				x: this.player.x,
@@ -220,9 +229,7 @@ class Level extends Phaser.Scene {
 				gunRotation: this.player.getByName('gun').rotation,
 				equip: this.player.getData('equip'),
 				flip: this.player.getData('flip'),
-				ghost: this.player.getData('ghost'),
-				kills: this.player.getData('kills'),
-				health: this.player.getData('health')
+				kills: this.player.getData('kills')
 			})
 
 			this.player.setData('startQueue', [])

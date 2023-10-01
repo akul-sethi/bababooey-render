@@ -91,7 +91,6 @@ class Opponent extends Phaser.GameObjects.Container{
 
 
         this.setData('startQueue', [])
-        this.setData('health', 100)
         this.setData('flip', false)
         this.setData('kills', 0)
         this.setData('ghost', false)
@@ -183,6 +182,7 @@ class Opponent extends Phaser.GameObjects.Container{
     // }
 
     hit(){
+        if(this.getData("ghost") == true) {return}
         this.scene.tweens.addCounter({
             onStart: () => {this.getByName('torso').setTint(0xFB8A6F)
                             this.getByName('gun').setTint(0xFB8A6F)},

@@ -41,7 +41,6 @@ def user_connected(username, methods=['GET', 'POST']):
 		"equip": 'fire',
 		"playerID": request.sid,
 		"name": username,
-		"health": 100,
 		"kills": 0
 	}
 	
@@ -71,7 +70,6 @@ def player_moved(movementData, methods=['GET', 'POST']):
 	player['flip'] = movementData['flip']
 	player['gunRotation'] = movementData['gunRotation']
 	player['equip'] = movementData['equip']
-	player['health'] = movementData['health']
 	player['kills'] = movementData['kills']
 
 	emit('newPlayerData', player, broadcast=True, skip_sid=request.sid)
@@ -82,20 +80,7 @@ def hit_player(hitData, methods=['GET', 'POST']):
 
 @socketio.on('iDied')
 def i_died(data, methods=['GET', 'POST']):
-	player = playersData[data['hID']]
-	player['x'] = 600
-	player['y'] = 200
-	player['dx'] = 0
-	player['dy'] = 0
-	player['startQueue'] = ['ghost']
-	player['flip'] = False
-	player['gunRotation'] = 0
-	player['equip'] = 'fire',
-	player['health'] = 100,
-	player['kills'] = 0
 	emit('fillAmmo', {'player': data['sID'], 'gun': data['t']}, broadcast=True)
-	emit('fillAmmo', {'player': data['hID'], 'gun': 'all'}, broadcast=True)
-	emit('newPlayerData', player, broadcast=True)
 	emit('newKillData', data["sID"], broadcast = True)
 
 
@@ -104,8 +89,8 @@ def i_died(data, methods=['GET', 'POST']):
 # if __name__ == '__main__':
 # 	socketio.run(app, debug=True, port=5007)
 
-# if __name__ == '__main__':
-# 	socketio.run(app, debug=True, port=5010, host='0.0.0.0')
-
 if __name__ == '__main__':
-	app.run()
+	socketio.run(app, debug=True, port=5010, host='0.0.0.0')
+
+# if __name__ == '__main__':
+# 	app.run()
