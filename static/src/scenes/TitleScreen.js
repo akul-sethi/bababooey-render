@@ -13,9 +13,7 @@ class TitleScreen extends Phaser.Scene{
     }
 
     create(){
-		this.socket = io()
-
-        this.registry.set('socket', this.socket)
+		
         
         this.background = this.add.tileSprite(0, 50, 1440, 240, 'vaperwave').setOrigin(0, 0)
         // this.reverseBackground = this.add.tileSprite(720, 0, -720, 240, 'vaperwave').setOrigin(0, 0)

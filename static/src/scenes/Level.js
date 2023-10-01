@@ -55,9 +55,15 @@ class Level extends Phaser.Scene {
 		
 
 		var self = this
-		this.socket = this.registry.get('socket');
+		this.socket = io()
 		this.players = this.add.group()
 
+		this.connected = false;
+
+		this.socket.on("connect", () => {
+			this.connected = true;
+			this.socket.emit('connected', this.username) 
+		})
 
 		this.socket.on('currentPlayers', (players) => {
 			Object.keys(players).forEach((id) => {
@@ -83,7 +89,7 @@ class Level extends Phaser.Scene {
 	
 		})
 		
-		this.socket.emit('connectToRoom', {room: this.room, username: this.username}) 
+		
 
 		this.socket.on('userDisconnected', (json) => {
 			let removalPlayer = null;
@@ -196,7 +202,7 @@ class Level extends Phaser.Scene {
 
 	update(t, dt){
 
-		if(!this.player){
+		if(!this.player || !this.connected){
 			return
 		}
 		

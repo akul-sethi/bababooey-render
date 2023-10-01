@@ -12,8 +12,7 @@ app.config['SECRET_KEY'] = 'asdfasfadkfha'
 socketio = SocketIO(app)
 
 
-roomsDict = {
-}
+playersData = {}
 	
 
 
@@ -28,12 +27,10 @@ def messageReceived(methods=['GET', 'POST']):
 
 
 
-@socketio.on('connectToRoom')
-def user_connected(data, methods=['GET', 'POST']):
+@socketio.on('connected')
+def user_connected(username, methods=['GET', 'POST']):
 	print(str(request.sid))
-	join_room(data['room'])
 	newPlayer = {
-		request.sid: {
 		"x": 600, 
 		"y": 200, 
 		"dx": 0,
@@ -43,42 +40,29 @@ def user_connected(data, methods=['GET', 'POST']):
 		"gunRotation": 0,
 		"equip": 'fire',
 		"playerID": request.sid,
-		"name": data['username'],
+		"name": username,
 		"health": 100,
 		"kills": 0
-		}
 	}
-	if(data['room'] not in roomsDict.keys()):
-		roomsDict[data['room']] = {}
 	
-	newPlayer.update(roomsDict[data['room']])
-	roomsDict[data['room']] = newPlayer
+	playersData[request.sid] = newPlayer
 	
-	emit('currentPlayers', roomsDict[data['room']], callback=messageReceived)
-	emit('newPlayer', roomsDict[data['room']][request.sid], broadcast=True, to=data['room'])
+	emit('currentPlayers', playersData, callback=messageReceived)
+	emit('newPlayer', newPlayer, broadcast=True)
 
 
 @socketio.on('disconnect')
 def user_disconnected():
-	print(rooms())
-	if(len(rooms()) > 1):
-		room = rooms()[1]
-		leave_room(room)
-		roomsDict[room].pop(request.sid)
-		emit('userDisconnected', {"playerID": request.sid}, broadcast = True)
+	emit('userDisconnected', {"playerID": request.sid}, broadcast = True)
+	playersData.pop(request.sid)
 
-		if(len(roomsDict[room]) == 0):
-			roomsDict.pop(room)
 	
 	
 
 @socketio.on('playerMoved')
 def player_moved(movementData, methods=['GET', 'POST']):
-	if(len(rooms()) <= 1):
-		return
-	room = rooms()[1]
 	id = movementData['playerID']
-	player = roomsDict[room][id]
+	player = playersData[request.sid]
 	player['x'] = movementData['x']
 	player['y'] = movementData['y']
 	player['dx'] = movementData['dx']
@@ -89,21 +73,16 @@ def player_moved(movementData, methods=['GET', 'POST']):
 	player['equip'] = movementData['equip']
 	player['health'] = movementData['health']
 	player['kills'] = movementData['kills']
-	if(len(roomsDict[room]) > 1):
-		emit('newPlayerData', player, broadcast=True, to=room, skip_sid=request.sid)
+
+	emit('newPlayerData', player, broadcast=True, skip_sid=request.sid)
 
 @socketio.on('hitPlayer')
 def hit_player(hitData, methods=['GET', 'POST']):
-	if(len(rooms()) <= 1):
-		return
-	emit('newHitData', hitData, broadcast = True, to=rooms()[1])
+	emit('newHitData', hitData, broadcast = True)
 
 @socketio.on('iDied')
 def i_died(data, methods=['GET', 'POST']):
-	if(len(rooms()) <= 1):
-		return
-	room = rooms()[1]
-	player = roomsDict[room][data['hID']]
+	player = playersData[data['hID']]
 	player['x'] = 600
 	player['y'] = 200
 	player['dx'] = 0
@@ -114,10 +93,10 @@ def i_died(data, methods=['GET', 'POST']):
 	player['equip'] = 'fire',
 	player['health'] = 100,
 	player['kills'] = 0
-	emit('fillAmmo', {'player': data['sID'], 'gun': data['t']}, broadcast=True, to=room)
-	emit('fillAmmo', {'player': data['hID'], 'gun': 'all'}, broadcast=True, to=room)
-	emit('newPlayerData', player, broadcast=True, to=room)
-	emit('newKillData', data["sID"], broadcast = True, to=room)
+	emit('fillAmmo', {'player': data['sID'], 'gun': data['t']}, broadcast=True)
+	emit('fillAmmo', {'player': data['hID'], 'gun': 'all'}, broadcast=True)
+	emit('newPlayerData', player, broadcast=True)
+	emit('newKillData', data["sID"], broadcast = True)
 
 
 
@@ -125,8 +104,8 @@ def i_died(data, methods=['GET', 'POST']):
 # if __name__ == '__main__':
 # 	socketio.run(app, debug=True, port=5007)
 
-if __name__ == '__main__':
-	socketio.run(app, debug=True, host='0.0.0.0')
-
 # if __name__ == '__main__':
-# 	app.run()
+# 	socketio.run(app, debug=True, port=5010, host='0.0.0.0')
+
+if __name__ == '__main__':
+	app.run()
